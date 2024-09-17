@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="heading-main">Raiden's Power</div>
+    <div class="main-inf">
+        <img src="/static/raiden.png" alt="">
+        <div class="text">
+            <span>
+Элемент - Электро
+
+
+Оружие - копье
+   
+
+Элементарный навык - Превосходство: Зловещее знамение даёт всем окружающим членам отряда Глаз грозового наказания, который проводит совместную атаку и наносит Электро урон по площади.
+  
+
+Взрыв стихии - Тайное искусство: Мусо синэцу - в этом состоянии сёгун Райдэн использует в бою свой меч, а её обычные атаки, заряженные атаки и атаки в падении получают инфузию Электро, которая не может быть отменена какой-либо другой инфузией.</span>
+        </div>
+    </div>
+    <div class="heading1">Польза для отряда</div>
+    <div class="tabl-align">
+        <div class="tabl">
+            <div class="tabl-left">
+                <div style="border-bottom: 2px solid #a9a9c4; padding: 10px;">Восстановление энергии</div>
+                <div style="border-bottom: 2px solid #a9a9c4; padding: 10px;">Бонус атаки</div>
+                <div style="padding: 10px;">Электро урон членам отряда</div>
+            </div>
+            <div class="tabl-right">
+                <div style="border-bottom: 2px solid #a9a9c4; padding: 10px;">+</div>
+                <div style="border-bottom: 2px solid #a9a9c4; padding: 10px;">+</div>
+                <div style="padding: 10px;">+</div>
+            </div>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: center; margin-top: 100px;">
+        <div class="heading2">Недостатки</div>
+    </div>
+    <div class="dis-ges">   
+        <div class="dis-ges_item">
+            <img style="box-shadow: 0px 4px 30px 0px #a9a9c4; border-radius: 10px;" src="/static/oops.png" alt="">
+            <span class="dis-ges_text">Не может взаимодействовать с некоторыми героями.</span>
+        </div>
+        <div class="dis-ges_item">
+            <img style="box-shadow: 0px 4px 30px 0px #a9a9c4; border-radius: 10px;" src="/static/pankakes.png" alt="">
+            <span class="dis-ges_text">Не умеет готовить:(</span>
+        </div>
+        <div class="dis-ges_item">
+            <img style="box-shadow: 0px 4px 30px 0px #a9a9c4; border-radius: 10px;" src="/static/angry.png" alt="">
+            <span class="dis-ges_text">В некоторых ситуациях может сбивать другие реакции элементарным навыком.</span>
+        </div>
+    </div>
+    <div style="display: flex; gap: 20px; align-items: center; margin-top: 100px; margin-left: 100px;">
+        <div style="font-size: 30px; color: #ebecef;">Подробная информация</div>
+        <button onclick="text()" class="btn">тут</button>
+        <div class="text1"></div>
+    </div>
+</body>
+</html>
+
+<script>
+    var t = document.querySelector('.text1')
+    function text(){
+        t.textContent = 'ха-ха шутка:) все, что нужно знать про Райден, уже здесь'
+}
+</script>
