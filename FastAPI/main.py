@@ -37,37 +37,90 @@ CUSTOMERS_DB = [
 
 app = FastAPI()
 
-@app.get("/bouquets/")
-def read_bouquets(): return BOUQUETS_DB
+@app.get("/")
+def main_page():
+    return {"message": "Hello!"}
 
-@app.get("/bouquets/{id}")
-def read_bouquets(id: int):
-    for bouquet in BOUQUETS_DB:
-        if bouquet.id == id:
+# Bouquets Endpoints
+
+@app.get("/bouquets/")
+def read_bouquets():
+    return BOUQUETS_DB
+
+@app.post("/bouquets/")
+def create_bouquet(bouquet: Bouquets):
+    BOUQUETS_DB.append(bouquet)
+    return bouquet
+
+@app.put("/bouquets/{id}")
+def update_bouquet(id: int, bouquet: Bouquets):
+    for index, existing_bouquet in enumerate(BOUQUETS_DB):
+        if existing_bouquet.id == id:
+            BOUQUETS_DB[index] = bouquet
             return bouquet
     raise HTTPException(status_code=404, detail="Букет не найден")
 
-@app.get("/components-bouquets/")
-def read_componets_bouquets(): return COMPONENTS_BOUQUETS_DB
+@app.delete("/bouquets/{id}")
+def delete_bouquet(id: int):
+    for index, bouquet in enumerate(BOUQUETS_DB):
+        if bouquet.id == id:
+            del BOUQUETS_DB[index]
+            return {"detail": "Букет удалён"}
+    raise HTTPException(status_code=404, detail="Букет не найден")
 
-@app.get("/components-bouquets/{id}")
-def read_componets_bouquets(id: int):
-    for components_bouquet in COMPONENTS_BOUQUETS_DB:
-        if components_bouquet.id == id:
-            return components_bouquet
+# Components Bouquets Endpoints
+
+@app.get("/components-bouquets/")
+def read_components_bouquets():
+    return COMPONENTS_BOUQUETS_DB
+
+@app.post("/components-bouquets/")
+def create_component_bouquet(component: СomponentsBouquets):
+    COMPONENTS_BOUQUETS_DB.append(component)
+    return component
+
+@app.put("/components-bouquets/{id}")
+def update_component_bouquet(id: int, component: СomponentsBouquets):
+    for index, existing_component in enumerate(COMPONENTS_BOUQUETS_DB):
+        if existing_component.id == id:
+            COMPONENTS_BOUQUETS_DB[index] = component
+            return component
     raise HTTPException(status_code=404, detail="Компоненты не найдены")
 
-@app.get("/customers/")
-def read_customers(): return CUSTOMERS_DB
+@app.delete("/components-bouquets/{id}")
+def delete_component_bouquet(id: int):
+    for index, component in enumerate(COMPONENTS_BOUQUETS_DB):
+        if component.id == id:
+            del COMPONENTS_BOUQUETS_DB[index]
+            return {"detail": "Компонент букета удалён"}
+    raise HTTPException(status_code=404, detail="Компоненты не найдены")
 
-@app.get("/customers/{id}")
-def read_customers(id: int):
-    for customer in CUSTOMERS_DB:
-        if customer.id == id:
+# Customers Endpoints
+
+@app.get("/customers/")
+def read_customers():
+    return CUSTOMERS_DB
+
+@app.post("/customers/")
+def create_customer(customer: Customers):
+    CUSTOMERS_DB.append(customer)
+    return customer
+
+@app.put("/customers/{id}")
+def update_customer(id: int, customer: Customers):
+    for index, existing_customer in enumerate(CUSTOMERS_DB):
+        if existing_customer.id == id:
+            CUSTOMERS_DB[index] = customer
             return customer
-    raise HTTPException(status_code=404, detail="Клинет не найден")
+    raise HTTPException(status_code=404, detail="Клиент не найден")
+
+@app.delete("/customers/{id}")
+def delete_customer(id: int):
+    for index, customer in enumerate(CUSTOMERS_DB):
+        if customer.id == id:
+            del CUSTOMERS_DB[index]
+            return {"detail": "Клиент удалён"}
+    raise HTTPException(status_code=404, detail="Клиент не найден")
 
 if __name__ == "__main__":
     uvicorn.run(app, host='127.0.0.1', port=8000)
-
-
